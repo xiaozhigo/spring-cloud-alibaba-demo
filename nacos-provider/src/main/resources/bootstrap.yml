@@ -1,0 +1,7 @@
+server:
+  port: 8849
+spring:
+  application:
+    name: nacos-provider
+  profiles:
+    active: dev

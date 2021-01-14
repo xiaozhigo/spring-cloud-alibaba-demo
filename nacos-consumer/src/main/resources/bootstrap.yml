@@ -1,0 +1,7 @@
+server:
+  port: 8850
+spring:
+  application:
+    name: nacos-consumer
+  profiles:
+    active: dev

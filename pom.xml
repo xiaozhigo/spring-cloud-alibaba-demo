@@ -9,6 +9,11 @@
     <name>spring-cloud-alibaba-demo</name>
     <description>Demo project for Spring Boot</description>
 
+    <modules>
+        <module>nacos-consumer</module>
+        <module>nacos-provider</module>
+    </modules>
+
     <properties>
         <java.version>1.8</java.version>
         <spring.boot.version>2.2.4.RELEASE</spring.boot.version>

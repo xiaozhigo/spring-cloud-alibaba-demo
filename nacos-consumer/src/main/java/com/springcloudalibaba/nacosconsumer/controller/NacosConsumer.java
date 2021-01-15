@@ -3,6 +3,7 @@ package com.springcloudalibaba.nacosconsumer.controller;
 import com.dubboapi.param.UserAddDTO;
 import com.dubboapi.param.UserDTO;
 import com.dubboapi.service.UserService;
+import com.springcloudalibaba.nacosconsumer.fegin.UserFeignClient;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -25,8 +26,11 @@ public class NacosConsumer {
     private RestTemplate restTemplate;
     @Autowired
     private LoadBalancerClient loadBalancerClient;
+    @Autowired
+    private UserFeignClient userFeignClient;
     @Reference(version = "1.0.0")
     private UserService userService;
+
 
     @GetMapping("/hello")
     public String hello(String name) {
@@ -58,5 +62,10 @@ public class NacosConsumer {
     @PostMapping("/user/add")
     public Integer add(UserAddDTO addDTO) {
         return userService.add(addDTO);
+    }
+
+    @GetMapping("/user/getId")
+    public UserDTO getId(@RequestParam("id") Integer id) {
+        return userFeignClient.get(id);
     }
 }

@@ -5,6 +5,7 @@
 
     <groupId>com.springcloud.alibaba.demo</groupId>
     <artifactId>spring-cloud-alibaba-demo</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-cloud-alibaba-demo</name>
     <description>Demo project for Spring Boot</description>
@@ -12,6 +13,7 @@
     <modules>
         <module>nacos-consumer</module>
         <module>nacos-provider</module>
+        <module>dubbo-api</module>
     </modules>
 
     <properties>

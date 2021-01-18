@@ -69,6 +69,17 @@
 			<artifactId>spring-cloud-starter-dubbo</artifactId>
 		</dependency>
 
+		<!-- 引入 Spring Cloud Alibaba Sentinel 相关依赖，使用 Sentinel 提供服务保障，并实现对其的自动配置 -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-apache-dubbo-adapter</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.springcloud.alibaba.demo</groupId>
 			<artifactId>dubbo-api</artifactId>

@@ -1,5 +1,6 @@
 package com.springcloudalibaba.nacosconsumer.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.dubboapi.param.UserAddDTO;
 import com.dubboapi.param.UserDTO;
 import com.dubboapi.service.UserService;
@@ -54,6 +55,7 @@ public class NacosConsumer {
         return "consumer:" + response;
     }
 
+    @SentinelResource("consumer-user-get")
     @GetMapping("/user/get")
     public UserDTO get(@RequestParam("id") Integer id) {
         return userService.get(id);
@@ -64,6 +66,7 @@ public class NacosConsumer {
         return userService.add(addDTO);
     }
 
+    @SentinelResource("consumer-user-getId")
     @GetMapping("/user/getId")
     public UserDTO getId(@RequestParam("id") Integer id) {
         return userFeignClient.get(id);

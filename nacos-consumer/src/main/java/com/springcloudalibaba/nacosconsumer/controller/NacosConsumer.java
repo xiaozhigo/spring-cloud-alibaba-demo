@@ -1,17 +1,13 @@
 package com.springcloudalibaba.nacosconsumer.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.dubboapi.param.UserAddDTO;
-import com.dubboapi.param.UserDTO;
-import com.dubboapi.service.UserService;
 import com.springcloudalibaba.nacosconsumer.fegin.UserFeignClient;
-import org.apache.dubbo.config.annotation.Reference;
+import com.springcloudalibaba.nacosconsumer.param.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -29,9 +25,6 @@ public class NacosConsumer {
     private LoadBalancerClient loadBalancerClient;
     @Autowired
     private UserFeignClient userFeignClient;
-    @Reference(version = "1.0.0")
-    private UserService userService;
-
 
     @GetMapping("/hello")
     public String hello(String name) {
@@ -53,17 +46,6 @@ public class NacosConsumer {
         String response = restTemplate.getForObject(targetUrl, String.class);
         // 返回结果
         return "consumer:" + response;
-    }
-
-    @SentinelResource("consumer-user-get")
-    @GetMapping("/user/get")
-    public UserDTO get(@RequestParam("id") Integer id) {
-        return userService.get(id);
-    }
-
-    @PostMapping("/user/add")
-    public Integer add(UserAddDTO addDTO) {
-        return userService.add(addDTO);
     }
 
     @SentinelResource("consumer-user-getId")

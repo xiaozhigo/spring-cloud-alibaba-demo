@@ -1,8 +1,8 @@
 package com.springcloud.alibaba.nacosprovider.controller;
 
-import com.dubboapi.param.UserAddDTO;
-import com.dubboapi.param.UserDTO;
-import com.springcloud.alibaba.nacosprovider.service.impl.service.UserService;
+import com.springcloud.alibaba.nacosprovider.param.UserAddDTO;
+import com.springcloud.alibaba.nacosprovider.param.UserDTO;
+import com.springcloud.alibaba.nacosprovider.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

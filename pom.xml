@@ -13,7 +13,6 @@
     <modules>
         <module>nacos-consumer</module>
         <module>nacos-provider</module>
-        <module>dubbo-api</module>
     </modules>
 
     <properties>

@@ -1,4 +1,4 @@
-package com.dubboapi.param;
+package com.springcloud.alibaba.nacosprovider.param;
 
 
 import java.io.Serializable;

@@ -1,8 +1,8 @@
 package com.springcloudalibaba.nacosconsumer.fegin;
 
 import com.alibaba.cloud.dubbo.annotation.DubboTransported;
-import com.dubboapi.param.UserAddDTO;
-import com.dubboapi.param.UserDTO;
+import com.springcloudalibaba.nacosconsumer.param.UserAddDTO;
+import com.springcloudalibaba.nacosconsumer.param.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @FeignClient(name = "nacos-provider")
-@DubboTransported(protocol = "dubbo")
 public interface UserFeignClient {
     /**
      * 根据指定用户编号，获得用户信息

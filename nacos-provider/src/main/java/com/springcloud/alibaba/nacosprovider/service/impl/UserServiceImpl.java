@@ -1,11 +1,13 @@
 package com.springcloud.alibaba.nacosprovider.service.impl;
 
 
-import com.dubboapi.param.UserAddDTO;
-import com.dubboapi.param.UserDTO;
-import com.dubboapi.service.UserService;
 
-@org.apache.dubbo.config.annotation.Service(protocol = "dubbo", version = "1.0.0")
+import com.springcloud.alibaba.nacosprovider.param.UserAddDTO;
+import com.springcloud.alibaba.nacosprovider.param.UserDTO;
+import com.springcloud.alibaba.nacosprovider.service.UserService;
+import org.springframework.stereotype.Service;
+
+@Service
 public class UserServiceImpl implements UserService {
 
     public UserDTO get(Integer id) {

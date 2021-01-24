@@ -1,8 +1,8 @@
-package com.dubboapi.service;
+package com.springcloud.alibaba.nacosprovider.service;
 
 
-import com.dubboapi.param.UserAddDTO;
-import com.dubboapi.param.UserDTO;
+import com.springcloud.alibaba.nacosprovider.param.UserAddDTO;
+import com.springcloud.alibaba.nacosprovider.param.UserDTO;
 
 public interface UserService {
     /**

@@ -2,7 +2,6 @@ package com.springcloudalibaba.nacosconsumer.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.springcloudalibaba.nacosconsumer.fegin.UserFeignClient;
-import com.springcloudalibaba.nacosconsumer.param.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import com.springcloudalibaba.nacosconsumer.param.UserDTO;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.springcloudalibaba.nacosconsumer.fegin;
 
-import com.alibaba.cloud.dubbo.annotation.DubboTransported;
+
 import com.springcloudalibaba.nacosconsumer.param.UserAddDTO;
 import com.springcloudalibaba.nacosconsumer.param.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;

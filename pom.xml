@@ -13,6 +13,7 @@
     <modules>
         <module>nacos-consumer</module>
         <module>nacos-provider</module>
+        <module>nacos-test</module>
     </modules>
 
     <properties>

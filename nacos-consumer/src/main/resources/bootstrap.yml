@@ -9,9 +9,6 @@ spring:
     username: root
     password: 123
 
-
-  profiles:
-    active: dev
 management:
   endpoints:
     web:

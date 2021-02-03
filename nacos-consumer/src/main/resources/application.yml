@@ -1,0 +1,38 @@
+spring:
+   cloud:
+      nacos:
+        # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
+        discovery:
+           server-addr: 127.0.0.1:8848
+           # Nacos 服务器地址
+           #service: ${spring.application.name} # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
+           #namespace: 4a95fbe6-b308-4da0-a42d-e3038c6d5350 # Nacos 命名空间 dev 的编号
+   # Sentinel 配置项
+      sentinel:
+        eager: true # 是否饥饿加载。默认为 false 关闭
+        transport:
+          dashboard: 127.0.0.1:7070 # Sentinel 控制台地址
+
+# Seata 配置项，对应 SeataProperties 类
+seata:
+  enabled: true #开启seata支持
+  application-id: ${spring.application.name} # Seata 应用编号，默认为 ${spring.application.name}
+  enable-auto-data-source-proxy: true
+  tx-service-group: system-server-group # Seata 事务组编号，用于 TC 集群名
+  #seata整合nacos配置中心
+  config:
+    type: nacos
+    nacos:
+      group: SEATA_GROUP #seata服务注册到nacos的组名SEATA_GROUP
+      server-addr: 192.168.176.128:8848
+  # Seata 服务配置项，对应 ServiceProperties 类
+  service:
+    # 虚拟组和分组的映射
+    vgroupMapping:
+      system-server-group: SEATA_GROUP
+  # Seata 注册中心配置项，对应 RegistryProperties 类
+  registry:
+    type: nacos # 注册中心类型，默认为 file
+    nacos:
+      group: SEATA_GROUP # 使用的 Seata 分组
+      serverAddr: 192.168.176.128:8848 # Nacos 服务地址

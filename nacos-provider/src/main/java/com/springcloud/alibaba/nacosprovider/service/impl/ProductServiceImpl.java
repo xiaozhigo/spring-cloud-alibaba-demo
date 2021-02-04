@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -18,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
 
-    @Transactional // <1> 开启新事物
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class) // <1> 开启新事物
     public void reduceStock(Long productId, Integer amount) throws Exception {
         logger.info("[reduceStock] 当前 XID: {}", RootContext.getXID());
 

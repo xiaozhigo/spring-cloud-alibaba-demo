@@ -9,6 +9,7 @@ import com.test.nacostest.param.ProductReduceStockDTO;
 import com.test.nacostest.service.OrderService;
 import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
+import io.seata.tm.api.transaction.Propagation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ProductServiceFeignClient productService;
 
-    @GlobalTransactional // <1>
+    @GlobalTransactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class) // <1>
     public Integer createOrder(Long userId, Long productId, Integer price) {
         Integer amount = 1; // 购买数量，暂时设置为 1。
 

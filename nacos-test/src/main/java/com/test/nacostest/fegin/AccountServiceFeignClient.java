@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * `account-service` 服务的 Feign 客户端
  */
-@FeignClient(name = "account-service")
+@FeignClient(name = "nacos-consumer")
 public interface AccountServiceFeignClient {
 
     @PostMapping("/account/reduce-balance")

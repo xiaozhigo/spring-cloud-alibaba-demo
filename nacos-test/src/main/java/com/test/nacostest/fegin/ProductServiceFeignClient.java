@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "product-service")
+@FeignClient(name = "nacos-provider")
 public interface ProductServiceFeignClient {
     @PostMapping("/product/reduce-stock")
     void reduceStock(@RequestBody ProductReduceStockDTO productReduceStockDTO);

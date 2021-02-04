@@ -18,7 +18,7 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountDao accountDao;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW) // <1> 开启新事物
+    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class) // <1> 开启新事物
     public void reduceBalance(Long userId, Integer price) throws Exception {
         logger.info("[reduceBalance] 当前 XID: {}", RootContext.getXID());
 
@@ -28,6 +28,7 @@ public class AccountServiceImpl implements AccountService {
         logger.info("[reduceBalance] 开始扣减用户 {} 余额", userId);
         // <3> 扣除余额
         int updateCount = accountDao.reduceBalance(price);
+        int i = 10/0;
         // 扣除成功
         if (updateCount == 0) {
             logger.warn("[reduceBalance] 扣除用户 {} 余额失败", userId);

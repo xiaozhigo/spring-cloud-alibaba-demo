@@ -4,6 +4,7 @@ import com.test.nacostest.service.OrderService;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,7 @@ public class OrderController {
 
     private Logger logger = LoggerFactory.getLogger(OrderController.class);
 
-    @Reference
+    @Autowired
     private OrderService orderService;
 
     @PostMapping("/create")

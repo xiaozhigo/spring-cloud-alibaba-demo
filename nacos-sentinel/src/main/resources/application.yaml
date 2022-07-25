@@ -14,4 +14,28 @@ spring:
         dashboard: 127.0.0.1:8080 # Sentinel 控制台地址
       filter:
         url-patterns: /** # 拦截请求的地址。默认为 /*
-
+      datasource:
+        ds1:
+          nacos:
+            # Nacos 服务器地址
+            server-addr: 127.0.0.1:80
+            # Nacos 命名空间
+            namespace:
+            # Nacos 分组
+            group-id: DEFAULT_GROUP
+            # Nacos 配置集编号
+            data-id: ${spring.application.name}-flow-rule
+            # 数据格式
+            data-type: json
+            # 规则类型
+            rule-type: FLOW
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' # 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 * ，可以开放所有端点。
+  endpoint:
+    # Health 端点配置项，对应 HealthProperties 配置类
+    health:
+      enabled: true # 是否开启。默认为 true 开启。
+      show-details: ALWAYS # 何时显示完整的健康信息。默认为 NEVER 都不展示。可选 WHEN_AUTHORIZED 当经过授权的用户；可选 ALWAYS 总是展示。

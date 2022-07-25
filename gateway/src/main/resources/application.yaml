@@ -1,0 +1,39 @@
+server:
+  port: 8181
+
+spring:
+  cloud:
+    # Spring Cloud Gateway 配置项，对应 GatewayProperties 类
+    gateway:
+      # 路由配置项，对应 RouteDefinition 数组
+      routes:
+        # 路由的编号
+        - id: first-one
+          # 路由到的目标地址
+          uri: https://www.baidu.com/
+          # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
+          predicates:
+            - Path=/first
+          filters:
+            - StripPrefix=1
+            # 路由的编号
+        - id: second-one
+            # 路由到的目标地址
+          uri: https://www.qq.com/
+          # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
+          predicates:
+            - Path=/second
+          filters:
+            - StripPrefix=1
+        - id: thrid-one
+          # 路由到的目标地址
+          uri: localhost:9191/
+          # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
+          predicates:
+            - Path=/sentinel
+          filters:
+            - StripPrefix=1
+    nacos:
+      discovery:
+        # Nacos 服务器地址
+        server-addr: 127.0.0.1:80

@@ -14,6 +14,8 @@
         <module>nacos-consumer</module>
         <module>nacos-provider</module>
         <module>nacos-test</module>
+        <module>nacos-sentinel</module>
+        <module>gateway</module>
     </modules>
 
     <properties>

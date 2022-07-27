@@ -14,7 +14,8 @@ spring:
           uri: https://www.baidu.com/
           # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
           predicates:
-            - Path=/first
+            - Path=/first/**
+            - Weight=sr,70
           filters:
             - StripPrefix=1
             # 路由的编号
@@ -23,7 +24,8 @@ spring:
           uri: https://www.qq.com/
           # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
           predicates:
-            - Path=/second
+            - Path=/first/**
+            - Weight=sr,30
           filters:
             - StripPrefix=1
         - id: thrid-one

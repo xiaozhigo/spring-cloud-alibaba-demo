@@ -1,27 +1,21 @@
 server:
-  port: 8850
+  port: 8150
 spring:
   application:
     name: nacos-consumer
   datasource:
-    url: jdbc:mysql://192.168.176.128:3306/seata_amount?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/seata?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 123
+    password: root
   cloud:
     nacos:
       # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
       discovery:
-        server-addr: 192.168.176.128:8848
+        server-addr: 10.130.250.136:80
         # Nacos 服务器地址
         #service: ${spring.application.name} # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
         #namespace: 4a95fbe6-b308-4da0-a42d-e3038c6d5350 # Nacos 命名空间 dev 的编号
-    # Sentinel 配置项
-    sentinel:
-      eager: true # 是否饥饿加载。默认为 false 关闭
-      transport:
-        dashboard: 127.0.0.1:7070 # Sentinel 控制台地址
-
 management:
   endpoints:
     web:
@@ -32,35 +26,25 @@ management:
     health:
       enabled: true # 是否开启。默认为 true 开启。
       show-details: ALWAYS # 何时显示完整的健康信息。默认为 NEVER 都不展示。可选 WHEN_AUTHORIZED 当经过授权的用户；可选 ALWAYS 总是展示。
-# Dubbo 配置项，对应 DubboConfigurationProperties 类
-dubbo:
-  # Dubbo 服务注册中心配置，对应 RegistryConfig 类
-  registry:
-    address: spring-cloud://127.0.0.1:8848 # 指定 Dubbo 服务注册中心的地址
-  # Spring Cloud Alibaba Dubbo 专属配置项，对应 DubboCloudProperties 类
-  cloud:
-    subscribed-services: nacos-provider # 设置订阅的应用列表，默认为 * 订阅所有应用。
-
-# Seata 配置项，对应 SeataProperties 类
 seata:
-  enabled: true #开启seata支持
-  application-id: ${spring.application.name} # Seata 应用编号，默认为 ${spring.application.name}
-  enable-auto-data-source-proxy: true
-  tx-service-group: system-server-group # Seata 事务组编号，用于 TC 集群名
-  #seata整合nacos配置中心
+  registry:
+    type: nacos # TC服务注册中心的配置，微服务根据这些信息去注册中心获取tc服务地址
+    nacos:
+      server-addr: 10.130.250.136:80
+      namespace: "" # namespace，默认为空
+      group: DEFAULT_GROUP # 分组，默认是DEFAULT_GROUP
+      application: seata-server # seata服务名称
+      username: nacos
+      password: nacos
+  tx-service-group: seata-demo # 事务组名称
+  service:
+    vgroup-mapping: # 事务组与cluster的映射关系
+      seata-demo: SSS
   config:
     type: nacos
     nacos:
-      group: SEATA_GROUP #seata服务注册到nacos的组名SEATA_GROUP
-      server-addr: 192.168.176.128:8848
-  # Seata 服务配置项，对应 ServiceProperties 类
-  service:
-    # 虚拟组和分组的映射
-    vgroupMapping:
-      system-server-group: SEATA_GROUP
-  # Seata 注册中心配置项，对应 RegistryProperties 类
-  registry:
-    type: nacos # 注册中心类型，默认为 file
-    nacos:
-      group: SEATA_GROUP # 使用的 Seata 分组
-      serverAddr: 192.168.176.128:8848 # Nacos 服务地址
+      server-addr: 10.130.250.136:80
+      username: nacos
+      password: nacos
+      group: DEFAULT_GROUP
+      data-id: client.properties

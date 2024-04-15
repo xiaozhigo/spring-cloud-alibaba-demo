@@ -18,7 +18,7 @@ spring:
             - StripPrefix=1
             # 路由的编号
         - id: second-one
-          # 路由到的目标地址
+            # 路由到的目标地址
           uri: https://www.qq.com/
           # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
           predicates:
@@ -54,3 +54,4 @@ logging:
   level:
     reactor.netty: DEBUG
     org.springframework.cloud.gateway: TRACE
+mast: hehe

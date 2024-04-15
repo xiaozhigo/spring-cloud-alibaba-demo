@@ -6,3 +6,26 @@ spring:
 server:
   servlet:
     context-path: /${spring.application.name}
+---
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8847
+      discovery:
+        namespace: dev
+      config:
+        namespace: dev
+        file-extension: yaml
+---
+spring:
+  profiles: test
+  cloud:
+    nacos:
+      discovery:
+        # Nacos 服务器地址
+        server-addr: 10.130.250.136:80
+        namespace: 5bae13dc-4258-4249-a18a-a33da545cd53 #--dev
+      config:
+        namespace: test
+        file-extension: yaml

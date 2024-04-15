@@ -1,8 +1,8 @@
 spring:
   application:
-    name: nacos-sentinel
+    name: nacos-test
   profiles:
-    active: dev
+    active: test
 server:
   servlet:
     context-path: /${spring.application.name}

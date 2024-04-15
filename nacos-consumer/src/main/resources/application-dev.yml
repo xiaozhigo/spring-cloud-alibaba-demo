@@ -1,8 +1,6 @@
 server:
   port: 8150
 spring:
-  application:
-    name: nacos-consumer
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/seata?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.jdbc.Driver

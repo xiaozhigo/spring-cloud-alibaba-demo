@@ -1,6 +1,6 @@
 spring:
   application:
-    name: nacos-sentinel
+    name: nacos-provider
   profiles:
     active: dev
 server:
